@@ -1,0 +1,36 @@
+{
+  "id": "footer_link",
+  "type": "SharedSlice",
+  "name": "FooterLink",
+  "description": "FooterLink",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "icon": {
+          "type": "Image",
+          "config": {
+            "label": "icon",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "link": {
+          "type": "StructuredText",
+          "config": {
+            "label": "link",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

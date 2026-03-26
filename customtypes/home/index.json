@@ -19,7 +19,7 @@
           "label": "Description",
           "placeholder": "",
           "allowTargetBlank": true,
-          "single": "strong,em"
+          "single": "strong,em,image"
         }
       },
       "highlighted_project": {
@@ -31,16 +31,116 @@
           "customtypes": [
             {
               "id": "projects",
-              "fields": ["title", "description"]
+              "fields": [
+                "title",
+                "description",
+                "type",
+                "date",
+                "imagecouverture"
+              ]
             }
           ]
+        }
+      },
+      "decsription2": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Decsription2",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "strong,em,image"
+        }
+      },
+      "photoprofil": {
+        "type": "Image",
+        "config": {
+          "label": "photoProfil",
+          "constraint": {
+            "width": null,
+            "height": null
+          },
+          "thumbnails": []
+        }
+      },
+      "photopaysage": {
+        "type": "Image",
+        "config": {
+          "label": "photoPaysage",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "iconmail": {
+        "type": "Image",
+        "config": {
+          "label": "iconMail",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "iconinstagram": {
+        "type": "Image",
+        "config": {
+          "label": "iconInstagram",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "icongithub": {
+        "type": "Image",
+        "config": {
+          "label": "iconGithub",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "iconlinkedin": {
+        "type": "Image",
+        "config": {
+          "label": "iconLinkedin",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "mail": {
+        "type": "StructuredText",
+        "config": {
+          "label": "mail",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "instagram": {
+        "type": "Text",
+        "config": {
+          "label": "instagram",
+          "placeholder": ""
+        }
+      },
+      "github": {
+        "type": "Text",
+        "config": {
+          "label": "github",
+          "placeholder": ""
+        }
+      },
+      "linkedin": {
+        "type": "Text",
+        "config": {
+          "label": "linkedin",
+          "placeholder": ""
         }
       },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "footer_link": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },

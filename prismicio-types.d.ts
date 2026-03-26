@@ -69,7 +69,7 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type HomeDocumentDataSlicesSlice = never;
+type HomeDocumentDataSlicesSlice = FooterLinkSlice;
 
 /**
  * Content for Home documents
@@ -107,8 +107,134 @@ interface HomeDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/content-relationship
    */
   highlighted_project: ContentRelationshipFieldWithData<
-    [{ id: "projects"; fields: ["title", "description"] }]
+    [
+      {
+        id: "projects";
+        fields: ["title", "description", "type", "date", "imagecouverture"];
+      },
+    ]
   >;
+
+  /**
+   * Decsription2 field in *Home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.decsription2
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  decsription2: prismic.RichTextField;
+
+  /**
+   * photoProfil field in *Home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.photoprofil
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  photoprofil: prismic.ImageField<never>;
+
+  /**
+   * photoPaysage field in *Home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.photopaysage
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  photopaysage: prismic.ImageField<never>;
+
+  /**
+   * iconMail field in *Home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.iconmail
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  iconmail: prismic.ImageField<never>;
+
+  /**
+   * iconInstagram field in *Home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.iconinstagram
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  iconinstagram: prismic.ImageField<never>;
+
+  /**
+   * iconGithub field in *Home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.icongithub
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  icongithub: prismic.ImageField<never>;
+
+  /**
+   * iconLinkedin field in *Home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.iconlinkedin
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  iconlinkedin: prismic.ImageField<never>;
+
+  /**
+   * mail field in *Home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.mail
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  mail: prismic.RichTextField;
+
+  /**
+   * instagram field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.instagram
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  instagram: prismic.KeyTextField;
+
+  /**
+   * github field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.github
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  github: prismic.KeyTextField;
+
+  /**
+   * linkedin field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.linkedin
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  linkedin: prismic.KeyTextField;
 
   /**
    * Slice Zone field in *Home*
@@ -194,6 +320,39 @@ interface ProjectsDocumentData {
   description: prismic.RichTextField;
 
   /**
+   * Type field in *Projects*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects.type
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  type: prismic.KeyTextField;
+
+  /**
+   * Date field in *Projects*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects.date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  date: prismic.RichTextField;
+
+  /**
+   * imageCouverture field in *Projects*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects.imagecouverture
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  imagecouverture: prismic.ImageField<never>;
+
+  /**
    * Slice Zone field in *Projects*
    *
    * - **Field Type**: Slice Zone
@@ -254,6 +413,106 @@ export type ProjectsDocument<Lang extends string = string> =
 
 export type AllDocumentTypes = HomeDocument | ProjectsDocument;
 
+/**
+ * Primary content in *Description → Default → Primary*
+ */
+export interface DecsriptionSliceDefaultPrimary {
+  /**
+   * Description field in *Description → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: decsription.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Description Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type DecsriptionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<DecsriptionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Description*
+ */
+type DecsriptionSliceVariation = DecsriptionSliceDefault;
+
+/**
+ * Description Shared Slice
+ *
+ * - **API ID**: `decsription`
+ * - **Description**: Decsription
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type DecsriptionSlice = prismic.SharedSlice<
+  "decsription",
+  DecsriptionSliceVariation
+>;
+
+/**
+ * Primary content in *FooterLink → Default → Primary*
+ */
+export interface FooterLinkSliceDefaultPrimary {
+  /**
+   * icon field in *FooterLink → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_link.default.primary.icon
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  icon: prismic.ImageField<never>;
+
+  /**
+   * link field in *FooterLink → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer_link.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  link: prismic.RichTextField;
+}
+
+/**
+ * Default variation for FooterLink Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FooterLinkSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FooterLinkSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *FooterLink*
+ */
+type FooterLinkSliceVariation = FooterLinkSliceDefault;
+
+/**
+ * FooterLink Shared Slice
+ *
+ * - **API ID**: `footer_link`
+ * - **Description**: FooterLink
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FooterLinkSlice = prismic.SharedSlice<
+  "footer_link",
+  FooterLinkSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -282,6 +541,14 @@ declare module "@prismicio/client" {
       ProjectsDocumentData,
       ProjectsDocumentDataSlicesSlice,
       AllDocumentTypes,
+      DecsriptionSlice,
+      DecsriptionSliceDefaultPrimary,
+      DecsriptionSliceVariation,
+      DecsriptionSliceDefault,
+      FooterLinkSlice,
+      FooterLinkSliceDefaultPrimary,
+      FooterLinkSliceVariation,
+      FooterLinkSliceDefault,
     };
   }
 }

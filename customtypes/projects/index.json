@@ -28,6 +28,30 @@
           "multi": "strong,em"
         }
       },
+      "type": {
+        "type": "Text",
+        "config": {
+          "label": "Type",
+          "placeholder": ""
+        }
+      },
+      "date": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Date",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "strong,em"
+        }
+      },
+      "imagecouverture": {
+        "type": "Image",
+        "config": {
+          "label": "imageCouverture",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
