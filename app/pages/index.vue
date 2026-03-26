@@ -27,7 +27,7 @@ onMounted(() => {
       trigger: panel,
       start: "top top",
       pin: true,
-      pinSpacing: true
+      pinSpacing: false
     });
   });
   ScrollTrigger.create({
@@ -202,9 +202,10 @@ h1{
   justify-content: center;
   padding: 0;
   margin: 0;
-
 }
-
+#profil2{
+  background-color: #FEE9E6;
+}
 /*PROJECTS*/
 .projects{
   background-color: #882A3C;
@@ -269,6 +270,8 @@ h1{
   font-size: 18px;
 }
 #seeMore{
+  background-color: #FEE9E6;
+  border: none;
   margin: 3%;
   padding: 1% 2% 1% 2%;
   font-family: 'Beautifully Delicious Sans', serif;
@@ -276,8 +279,14 @@ h1{
   font-weight: bold;
   color: #882A3C;
 }
+#seeMore:hover{
+  background-color: #FAF0EE;
+  color: #882A3C;
+}
 .footer{
-  /*margin: 10% 0% 10% 0%;*/
+  background-color: #FAF0EE;
+
+
 }
 .footer h1{
   font-family: 'TheSeasons', serif;
