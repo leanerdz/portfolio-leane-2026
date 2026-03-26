@@ -4,6 +4,8 @@ import { components } from "~/slices";
 import {gsap} from "gsap";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 import NavBar from "~/components/NavBar.vue";
 
 const { client } = usePrismic();
@@ -69,7 +71,7 @@ onMounted(() => {
         <PrismicImage :field="page?.data.photopaysage"/>
       </div>
     </section>
-    <section class="projects panel" data-theme="dark">
+    <section class="projects panel" id="projects" data-theme="dark">
       <h1>Mes projets</h1>
       <hr>
       <section class="highlighted-project">
@@ -88,7 +90,7 @@ onMounted(() => {
       </section>
           <button id="seeMore">Voir plus</button>
     </section>
-    <section class="footer panel" data-theme="light">
+    <section class="footer panel" id="footer" data-theme="light">
       <h1>Me contacter</h1>
       <div id="mail">
         <PrismicImage :field="page?.data.iconmail"/>
@@ -204,7 +206,7 @@ h1{
   margin: 0;
 }
 #profil2{
-  background-color: #FEE9E6;
+  background-color: #FAF0EE;
 }
 /*PROJECTS*/
 .projects{
@@ -285,8 +287,6 @@ h1{
 }
 .footer{
   background-color: #FAF0EE;
-
-
 }
 .footer h1{
   font-family: 'TheSeasons', serif;

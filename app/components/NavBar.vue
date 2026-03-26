@@ -1,12 +1,25 @@
-<script type="text/javascript">
-
+<script type="text/javascript" setup>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+function scrollToPanel(panelId) {
+  const panel = document.getElementById(panelId);
+  if (panel) {
+    gsap.to(window, {
+      scrollTo: { y: panel, offsetY: 0 }, // scroll vers le panel
+      duration: 1,
+      ease: "power2.inOut"
+    });
+  }
+}
 </script>
 <template v-slot:default>
-  <div id="navBar" :class="theme">
+  <div id="navBar">
     <nav>
-      <a href="">A propos de moi </a>
-      <a href="">Projets</a>
-      <a href="">Contact </a>
+      <a @click.prevent="scrollToPanel('profil1')">A propos de moi</a>
+      <a @click.prevent="scrollToPanel('projects')">Projets</a>
+      <a @click.prevent="scrollToPanel('footer')">Contact</a>
     </nav>
     <hr>
   </div>
