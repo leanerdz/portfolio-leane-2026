@@ -120,25 +120,31 @@
           "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
-      "instagram": {
-        "type": "Text",
+      "instagramlink": {
+        "type": "StructuredText",
         "config": {
-          "label": "instagram",
-          "placeholder": ""
+          "label": "instagramLink",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
-      "github": {
-        "type": "Text",
+      "githublink": {
+        "type": "StructuredText",
         "config": {
-          "label": "github",
-          "placeholder": ""
+          "label": "githubLink",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
-      "linkedin": {
-        "type": "Text",
+      "linkedinlink": {
+        "type": "StructuredText",
         "config": {
-          "label": "linkedin",
-          "placeholder": ""
+          "label": "linkedinlink",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
       "slices": {

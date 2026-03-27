@@ -215,37 +215,37 @@ interface HomeDocumentData {
   mail: prismic.RichTextField;
 
   /**
-   * instagram field in *Home*
+   * instagramLink field in *Home*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: home.instagram
+   * - **API ID Path**: home.instagramlink
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
-  instagram: prismic.KeyTextField;
+  instagramlink: prismic.RichTextField;
 
   /**
-   * github field in *Home*
+   * githubLink field in *Home*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: home.github
+   * - **API ID Path**: home.githublink
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
-  github: prismic.KeyTextField;
+  githublink: prismic.RichTextField;
 
   /**
-   * linkedin field in *Home*
+   * linkedinlink field in *Home*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: home.linkedin
+   * - **API ID Path**: home.linkedinlink
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
-  linkedin: prismic.KeyTextField;
+  linkedinlink: prismic.RichTextField;
 
   /**
    * Slice Zone field in *Home*

@@ -51,23 +51,23 @@ onMounted(() => {
 
 </script>
 <template>
-  <!--<section class="guide">
-    <div class="overlay">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </section>
--->
+  <!-- <section class="guide">
+     <div class="overlay">
+       <div></div>
+       <div></div>
+       <div></div>
+       <div></div>
+       <div></div>
+       <div></div>
+       <div></div>
+       <div></div>
+       <div></div>
+       <div></div>
+       <div></div>
+       <div></div>
+     </div>
+   </section>
+ -->
   <nav-bar/>
   <main>
     <section class="panel profil1" id="profil1" data-theme="light">
@@ -116,15 +116,15 @@ onMounted(() => {
       <div id="links-containers">
         <div class="link">
           <PrismicImage :field="page?.data.icongithub"/>
-          <p>{{page?.data.github}}</p>
+          <PrismicRichText :field="page?.data.githublink"/>
         </div>
         <div class="link">
           <PrismicImage :field="page?.data.iconinstagram"/>
-          <p>{{page?.data.instagram}}</p>
+          <PrismicRichText :field="page?.data.instagramlink"/>
         </div>
         <div class="link">
           <PrismicImage :field="page?.data.iconlinkedin"/>
-          <p>{{page?.data.linkedin}}</p>
+          <PrismicRichText :field="page?.data.linkedinlink"/>
         </div>
       </div>
     </section>
@@ -310,7 +310,8 @@ onMounted(() => {
   color: var(--color-primary);
   font-size: 20px;
   justify-self: center;
-  width: 25%;
+  width: fit-content;
+  text-wrap: nowrap;
 }
 
 .link img{
@@ -319,8 +320,10 @@ onMounted(() => {
 
 #links-containers{
   display: flex;
-  justify-content: center;
-  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  width: 95%;
 }
 
 
