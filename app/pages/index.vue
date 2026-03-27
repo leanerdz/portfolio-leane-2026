@@ -21,6 +21,7 @@ useSeoMeta({
   ogImage: computed(() => asImageSrc(page.value?.data.meta_image)),
 });
 gsap.registerPlugin(ScrollTrigger);
+
 onMounted(() => {
   const panels = gsap.utils.toArray(".panel");
   const setPanelHeights = () => {
@@ -31,8 +32,8 @@ onMounted(() => {
   };
 
   setPanelHeights();
-
   window.addEventListener('resize', setPanelHeights);
+
   panels.forEach((panel, i) => {
     ScrollTrigger.create({
       trigger: panel,
@@ -41,9 +42,9 @@ onMounted(() => {
       pinSpacing: false
     });
   });
-  ScrollTrigger.create({
+/*  ScrollTrigger.create({
     snap: 1 / (panels.length - 1)
-  });
+  });*/
 
 });
 
@@ -69,7 +70,7 @@ onMounted(() => {
 -->
   <nav-bar/>
   <main>
-    <section class="panel" id="profil1" data-theme="light">
+    <section class="panel profil1" id="profil1" data-theme="light">
       <h1 id="title">{{page?.data.title}}</h1>
       <div class="profil">
         <ParallaxImage :field="page?.data.photoprofil" />
@@ -323,9 +324,7 @@ onMounted(() => {
 }
 
 
-@media (max-width: 800px) {
-  body
-
+@media (max-width: 500px) {
   #title{
     font-size: 40px;
   }

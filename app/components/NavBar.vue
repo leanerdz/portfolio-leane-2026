@@ -2,9 +2,14 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { useIntersectionObserver } from '@vueuse/core'
-import { shallowRef, useTemplateRef } from 'vue'
+
 import { onMounted, ref } from 'vue'
+
+const activeLink = ref("profil1")
+
+const setActive = (id) => {
+  activeLink.value = id
+}
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 function scrollToPanel(panelId) {
@@ -49,9 +54,9 @@ const colorChange = () => {
 <template v-slot:default>
   <div id="navBar" >
     <nav :style="{ color: colorChange() }">
-      <a @click.prevent="scrollToPanel('profil1')" >A propos de moi</a>
-      <a @click.prevent="scrollToPanel('projects')">Projets</a>
-      <a @click.prevent="scrollToPanel('footer')">Contact</a>
+      <a href="#" @click.prevent="() =>{setActive('profil1'); scrollToPanel('profil1')}" :class="{ active: activeLink === 'profil1' }">A propos</a>
+      <a href="#projects" @click.prevent="() =>{setActive('projects'); scrollToPanel('projects')}" :class="{ active: activeLink === 'projects' }">Projets</a>
+      <a href="#footer" @click.prevent="() =>{setActive('footer'); scrollToPanel('footer')}" :class="{ active: activeLink === 'footer' }">Contact</a>
     </nav>
     <hr :style="{ backgroundColor: colorChange() }" />
   </div>
@@ -59,7 +64,6 @@ const colorChange = () => {
 </template>
 
 <style scoped>
-
 
 #navBar{
   position: fixed;
@@ -73,17 +77,36 @@ nav{
   font-weight: bolder;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 nav a{
+  position: relative;
+  color: inherit;
   text-decoration: none;
   font-size: 22px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
   margin: 2% 9.5% 1.5% 9.5%;
 }
-nav a:hover {
-  transform: translateY(-2px);
-  opacity: 0.7;
+
+nav a::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  background: currentColor;
+  border-radius: 50%;
+  transform: translateY(-50%) scale(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+nav a:hover::before {
+  transform: translateY(-50%) scale(1);
+}
+
+nav a.active::before {
+  transform: translateY(-50%) scale(1);
 }
 
 hr{
@@ -93,10 +116,18 @@ hr{
   border: 0;
 }
 
-@media (max-width: 500px) {
-
+@media (max-width: 400px) {
+  nav{
+    width: fit-content;
+  }
   nav a{
     font-size: 13px;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    margin: 2% 9.5% 1.5% 9.5%;
+  }
+  hr{
+    width: 84.5%;
   }
 
 }
