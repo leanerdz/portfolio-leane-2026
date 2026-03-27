@@ -5,7 +5,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 import { onMounted, ref } from 'vue'
 
-const activeLink = ref("profil1")
+const activeLink = ref("")
 
 const setActive = (id) => {
   activeLink.value = id
