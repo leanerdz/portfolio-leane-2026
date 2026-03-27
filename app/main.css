@@ -1,0 +1,28 @@
+
+:root {
+    --color-primary: #882A3C;
+    --color-secondary: #FEE9E6;
+    --color-background: #FAF0EE;
+}
+
+
+@font-face {
+    font-family: 'BeautifullyDelicious';
+    src: url('fonts/Beautifully_Delicious_Font/BDSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'TheSeasons';
+    src: url('fonts/The_Seasons_Font/Fontspring-DEMO-theseasons-bd.woff2') format('woff2');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background);
+    /*font-family: 'BeautifullyDelicious', sans-serif;*/
+}
+
+h1 {
+    font-family: 'TheSeasons', serif;
+}

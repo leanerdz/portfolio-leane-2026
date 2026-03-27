@@ -87,6 +87,17 @@ interface HomeDocumentData {
   title: prismic.KeyTextField;
 
   /**
+   * Description Title field in *Home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.description_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description_title: prismic.RichTextField;
+
+  /**
    * Description field in *Home*
    *
    * - **Field Type**: Rich Text
@@ -96,6 +107,39 @@ interface HomeDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   description: prismic.RichTextField;
+
+  /**
+   * photoProfil field in *Home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.photoprofil
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  photoprofil: prismic.ImageField<never>;
+
+  /**
+   * Decsription2 field in *Home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.decsription2
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  decsription2: prismic.RichTextField;
+
+  /**
+   * photoPaysage field in *Home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.photopaysage
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  photopaysage: prismic.ImageField<never>;
 
   /**
    * Highlighted Project field in *Home*
@@ -114,39 +158,6 @@ interface HomeDocumentData {
       },
     ]
   >;
-
-  /**
-   * Decsription2 field in *Home*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: home.decsription2
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  decsription2: prismic.RichTextField;
-
-  /**
-   * photoProfil field in *Home*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: home.photoprofil
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  photoprofil: prismic.ImageField<never>;
-
-  /**
-   * photoPaysage field in *Home*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: home.photopaysage
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  photopaysage: prismic.ImageField<never>;
 
   /**
    * iconMail field in *Home*

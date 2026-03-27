@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ["@nuxtjs/prismic"],
-
+  css: ['../app/main.css'],
   prismic: {
     endpoint: apiEndpoint || repositoryName
   }
