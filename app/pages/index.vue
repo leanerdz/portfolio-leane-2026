@@ -157,11 +157,11 @@ onMounted(() => {
 /*TITLE*/
 #title{
   color: var(--color-primary);
+  font-family: 'TheSeasons', serif;
   font-size: 96px;
   font-weight: normal;
   justify-self: center;
 }
-
 /*IMAGES*/
 
 
@@ -174,7 +174,8 @@ onMounted(() => {
   gap: 2%;
   margin: 0% 9.5% 0% 9.5%;
   color: var(--color-primary);
-  font-family: 'Beautifully Delicious Sans', serif;
+  font-family: 'Beautifully Delicious Sans', sans-serif;
+
   font-size: 20px;
 }
 .description{
@@ -204,7 +205,8 @@ onMounted(() => {
 .projects{
   background-color: var(--color-primary);
   padding-top: 40px;
-  font-family: 'Beautifully Delicious Sans', serif;
+  font-family: 'Beautifully Delicious Sans', sans-serif;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -268,7 +270,8 @@ onMounted(() => {
   border: 1px solid var(--color-secondary);
   margin: 3%;
   padding: 1% 2% 1% 2%;
-  font-family: 'Beautifully Delicious Sans', serif;
+  font-family: 'Beautifully Delicious Sans', sans-serif;
+
   font-size: 20px;
   font-weight: bold;
   color: var(--color-secondary);
@@ -303,7 +306,8 @@ onMounted(() => {
 }
 
 .link{
-  font-family: 'Beautifully Delicious Sans', serif;
+  font-family: 'Beautifully Delicious Sans', sans-serif;
+
   font-weight: bold;
   display: flex;
   align-items: center;
