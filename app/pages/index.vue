@@ -187,7 +187,7 @@ onMounted(() => {
   font-weight: normal;
 }
 .panel {
-  min-height: 100vh;
+  min-height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
   align-items: center;
