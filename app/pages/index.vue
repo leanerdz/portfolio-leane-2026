@@ -156,6 +156,8 @@ onMounted(() => {
 
 /*TITLE*/
 #title{
+  position: relative;
+  top: 70px;
   color: var(--color-primary);
   font-family: 'TheSeasons', serif;
   font-size: 96px;
@@ -218,6 +220,8 @@ onMounted(() => {
   color: var(--color-secondary);
   font-size: 64px;
   justify-self: center;
+  position: relative;
+  top: 70px;
 }
 
 .projects hr{
@@ -230,11 +234,12 @@ onMounted(() => {
 }
 
 .highlighted-project{
+  overflow: clip;
   margin-top: 40px;
   color: var(--color-primary);
   font-size: 20px;
   width: 64.5%;
-  /*height: fit-content;*/
+  height: 60%;
   display: flex;
   background: var(--color-secondary);
 }
