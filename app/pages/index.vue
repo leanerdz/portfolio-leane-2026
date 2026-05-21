@@ -88,16 +88,19 @@ onMounted(() => {
     </section>
     <section class="projects panel" id="projects" data-theme="dark">
       <h1>Mes projets</h1>
-      <hr>
+      <div class="title-line"></div>
       <section class="highlighted-project">
         <!--<div class="img-project">
+           <ParallaxImage :field="page?.data.highlighted_project.data.imagecouverture" />
+         </div>-->
+        <div class="project-image">
           <ParallaxImage :field="page?.data.highlighted_project.data.imagecouverture" />
-        </div>-->
-        <PrismicImage :field="page?.data.highlighted_project.data.imagecouverture"/>
+          <!--<PrismicImage:field="page?.data.highlighted_project.data.imagecouverture"/>-->
+        </div>
         <div class="highlighted-project-description">
-          <div id="border">
+          <div class="border">
             <h2>{{page?.data.highlighted_project.data.title}}</h2>
-            <div id="info">
+            <div class="info">
               <p>{{ page?.data.highlighted_project.data.type }}</p>
               <PrismicRichText :field="page?.data.highlighted_project.data.date"/>
             </div>
@@ -157,7 +160,7 @@ onMounted(() => {
 /*TITLE*/
 #title{
   position: relative;
-  top: 70px;
+  /*top: 70px;*/
   color: var(--color-primary);
   font-family: 'TheSeasons', serif;
   font-size: 96px;
@@ -173,11 +176,10 @@ onMounted(() => {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 2%;
+  gap: 10%;
   margin: 0% 9.5% 0% 9.5%;
   color: var(--color-primary);
   font-family: 'Beautifully Delicious Sans', sans-serif;
-
   font-size: 20px;
 }
 .description{
@@ -189,7 +191,8 @@ onMounted(() => {
   font-weight: normal;
 }
 .panel {
-  min-height: calc(100vh - 80px);
+  /*min-height: calc(100vh - 80px);
+  min-height: 100vh;*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -202,90 +205,107 @@ onMounted(() => {
   background-color: var(--color-background);
 }
 
-
-/*PROJECTS*/
-.projects{
+/* PROJET */
+.projects {
   background-color: var(--color-primary);
-  padding-top: 40px;
+  padding: 3rem 1.5rem;
   font-family: 'Beautifully Delicious Sans', sans-serif;
-
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  gap: 2rem;
 }
-.projects h1{
+
+.projects h1 {
   font-family: 'TheSeasons', serif;
   font-weight: normal;
   color: var(--color-secondary);
-  font-size: 64px;
-  justify-self: center;
-  position: relative;
-  top: 70px;
+  font-size: clamp(3rem, 6vw, 5rem);
+  text-align: center;
+  margin: 0;
 }
 
-.projects hr{
+.title-line {
+  width: min(500px, 80%);
   height: 1px;
-  width: 31.3%;
-  color: var(--color-secondary);
-  background: var(--color-secondary);
-  font-size: 0;
-  border: 0;
-}
-
-.highlighted-project{
-  overflow: clip;
-  margin-top: 40px;
-  color: var(--color-primary);
-  font-size: 20px;
-  width: 64.5%;
-  height: 60%;
-  display: flex;
   background: var(--color-secondary);
 }
 
-.highlighted-project-description{
-  padding: 2%;
+.highlighted-project {
+  width: min(1100px, 100%);
+  background: var(--color-secondary);
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  overflow: hidden;
 }
-#border{
-  padding: 3%;
-  border: var(--color-primary) solid 1px;
-  width: 93%;
-  height: 93%;
+.highlighted-project > * {
+  min-width: 0;
+}
+.project-image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.highlighted-project-description {
+  padding: 1.5rem;
+  min-width: 0;
+}
+
+.border {
+  border: 1px solid var(--color-primary);
+  padding: 2rem;
+  height: 100% - 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-#border h2{
-  width: 60%;
-  text-align: center;
-}
-
-#info{
-  width: 100%;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 3%;
-  font-size: 18px;
+  gap: 2rem;
 }
-#seeMore{
-  background-color: var(--color-primary);
-  border: 1px solid var(--color-secondary);
-  margin: 3%;
-  padding: 1% 2% 1% 2%;
-  font-family: 'Beautifully Delicious Sans', sans-serif;
 
-  font-size: 20px;
+.border h2 {
+  text-align: center;
+  color: var(--color-primary);
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 1rem;
+}
+
+.border p {
+  line-height: 1.6;
+}
+
+#seeMore {
+  background-color: transparent;
+  border: 1px solid var(--color-secondary);
+  padding: 1rem 2rem;
+  font-family: 'Beautifully Delicious Sans', sans-serif;
+  font-size: 1rem;
   font-weight: bold;
   color: var(--color-secondary);
-  transition: background-color 0.5s ease;
+  cursor: pointer;
+  transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
 }
-#seeMore:hover{
+
+#seeMore:hover {
   background-color: var(--color-secondary);
   color: var(--color-primary);
 }
+
 
 /* FOOTER */
 .footer{
@@ -305,28 +325,39 @@ onMounted(() => {
   color: var(--color-primary);
   font-size: 32px;
   justify-self: center;
+  margin: 100px 0 100px 0;
 }
 #mail img{
   margin-right:5%;
 }
 
 .link{
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-secondary);
+  padding: 0.5rem 2rem;
   font-family: 'Beautifully Delicious Sans', sans-serif;
-
   font-weight: bold;
   display: flex;
   align-items: center;
-  color: var(--color-primary);
+  color: var(--color-secondary);
   font-size: 20px;
   justify-self: center;
   width: fit-content;
   text-wrap: nowrap;
+  transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
 }
 
 .link img{
   margin-right:5%;
 }
 
+.link:hover{
+  border: 1px solid var(--color-primary);
+  background-color: transparent;
+  color: var(--color-primary);
+}
 #links-containers{
   display: flex;
   justify-content: space-evenly;
