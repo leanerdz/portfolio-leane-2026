@@ -302,6 +302,82 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
+type ProjectGalleryDocumentDataSlicesSlice = ProjectHighlightsSlice;
+
+/**
+ * Content for project_gallery documents
+ */
+interface ProjectGalleryDocumentData {
+  /**
+   * Title field in *project_gallery*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_gallery.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *project_gallery*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_gallery.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<ProjectGalleryDocumentDataSlicesSlice>; /**
+   * Meta Title field in *project_gallery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: project_gallery.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *project_gallery*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: project_gallery.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *project_gallery*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_gallery.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * project_gallery document from Prismic
+ *
+ * - **API ID**: `project_gallery`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProjectGalleryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ProjectGalleryDocumentData>,
+    "project_gallery",
+    Lang
+  >;
+
 type ProjectsDocumentDataSlicesSlice = never;
 
 /**
@@ -422,7 +498,10 @@ export type ProjectsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomeDocument | ProjectsDocument;
+export type AllDocumentTypes =
+  | HomeDocument
+  | ProjectGalleryDocument
+  | ProjectsDocument;
 
 /**
  * Primary content in *Description → Default → Primary*
@@ -524,6 +603,146 @@ export type FooterLinkSlice = prismic.SharedSlice<
   FooterLinkSliceVariation
 >;
 
+/**
+ * Item in *ProjectHighlights → Default → Primary → collaborators*
+ */
+export interface ProjectHighlightsSliceDefaultPrimaryCollaboratorsItem {
+  /**
+   * name field in *ProjectHighlights → Default → Primary → collaborators*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_highlights.default.primary.collaborators[].name
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  name: prismic.RichTextField;
+}
+
+/**
+ * Item in *ProjectHighlights → Default → Primary → project_images*
+ */
+export interface ProjectHighlightsSliceDefaultPrimaryProjectImagesItem {
+  /**
+   * image1 field in *ProjectHighlights → Default → Primary → project_images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_highlights.default.primary.project_images[].image1
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image1: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *ProjectHighlights → Default → Primary*
+ */
+export interface ProjectHighlightsSliceDefaultPrimary {
+  /**
+   * Title field in *ProjectHighlights → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_highlights.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * subtitle field in *ProjectHighlights → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_highlights.default.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  subtitle: prismic.RichTextField;
+
+  /**
+   * date field in *ProjectHighlights → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_highlights.default.primary.date
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  date: prismic.RichTextField;
+
+  /**
+   * description field in *ProjectHighlights → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_highlights.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * collaborators field in *ProjectHighlights → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_highlights.default.primary.collaborators[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  collaborators: prismic.GroupField<
+    Simplify<ProjectHighlightsSliceDefaultPrimaryCollaboratorsItem>
+  >;
+
+  /**
+   * project_images field in *ProjectHighlights → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_highlights.default.primary.project_images[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  project_images: prismic.GroupField<
+    Simplify<ProjectHighlightsSliceDefaultPrimaryProjectImagesItem>
+  >;
+
+  /**
+   * layout field in *ProjectHighlights → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: default
+   * - **API ID Path**: project_highlights.default.primary.layout
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  layout: prismic.SelectField<"default" | "reverse", "filled">;
+}
+
+/**
+ * Default variation for ProjectHighlights Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProjectHighlightsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProjectHighlightsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProjectHighlights*
+ */
+type ProjectHighlightsSliceVariation = ProjectHighlightsSliceDefault;
+
+/**
+ * ProjectHighlights Shared Slice
+ *
+ * - **API ID**: `project_highlights`
+ * - **Description**: ProjectHighlights
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProjectHighlightsSlice = prismic.SharedSlice<
+  "project_highlights",
+  ProjectHighlightsSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -548,6 +767,9 @@ declare module "@prismicio/client" {
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
+      ProjectGalleryDocument,
+      ProjectGalleryDocumentData,
+      ProjectGalleryDocumentDataSlicesSlice,
       ProjectsDocument,
       ProjectsDocumentData,
       ProjectsDocumentDataSlicesSlice,
@@ -560,6 +782,12 @@ declare module "@prismicio/client" {
       FooterLinkSliceDefaultPrimary,
       FooterLinkSliceVariation,
       FooterLinkSliceDefault,
+      ProjectHighlightsSlice,
+      ProjectHighlightsSliceDefaultPrimaryCollaboratorsItem,
+      ProjectHighlightsSliceDefaultPrimaryProjectImagesItem,
+      ProjectHighlightsSliceDefaultPrimary,
+      ProjectHighlightsSliceVariation,
+      ProjectHighlightsSliceDefault,
     };
   }
 }

@@ -3,6 +3,7 @@ import { asImageSrc } from "@prismicio/client";
 import { components } from "~/slices";
 import {gsap} from "gsap";
 
+import ParallaxImage from "~/components/ParallaxImage.vue";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
