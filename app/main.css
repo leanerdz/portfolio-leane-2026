@@ -8,12 +8,12 @@
 
 @font-face {
     font-family: 'BeautifullyDelicious';
-    src: url('fonts/Beautifully_Delicious_Font/BDSans-Regular.woff2') format('woff2');
+    src: url('/fonts/Beautifully_Delicious_Font/BDSans-Regular.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'TheSeasons';
-    src: url('fonts/The_Seasons_Font/Fontspring-DEMO-theseasons-bd.woff2') format('woff2');
+    src: url('/fonts/The_Seasons_Font/Fontspring-DEMO-theseasons-bd.woff2') format('woff2');
 }
 
 body {
