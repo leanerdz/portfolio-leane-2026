@@ -37,6 +37,6 @@ a{
 
 @media (max-width:768px){
     body{
-        font-family: 'BeautifullyDelicious', serif !important;
+        font-family: 'BeautifullyDelicious', sans-serif !important;
     }
 }
