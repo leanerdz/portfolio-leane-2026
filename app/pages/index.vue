@@ -23,30 +23,51 @@ useSeoMeta({
 });
 gsap.registerPlugin(ScrollTrigger);
 
+let triggers: ScrollTrigger[] = [];
 onMounted(() => {
   const panels = gsap.utils.toArray(".panel");
-  const setPanelHeights = () => {
-    const vh = window.innerHeight;
-    panels.forEach(panel => {
-      panel.style.height = `${vh}px`;
-    });
-  };
 
-  setPanelHeights();
-  window.addEventListener('resize', setPanelHeights);
+  const mm = gsap.matchMedia();
 
-  panels.forEach((panel, i) => {
-    ScrollTrigger.create({
-      trigger: panel,
-      start: "top top",
-      pin: true,
-      pinSpacing: false
+  mm.add("(min-width: 769px)", () => {
+    const setPanelHeights = () => {
+      const vh = window.innerHeight;
+      panels.forEach((panel: any) => {
+        panel.style.height = `${vh}px`;
+      });
+    };
+
+    setPanelHeights();
+    window.addEventListener("resize", setPanelHeights);
+
+    triggers = panels.map((panel: any) =>
+        ScrollTrigger.create({
+          trigger: panel,
+          start: "top top",
+          pin: true,
+          pinSpacing: false,
+        })
+    );
+
+    ScrollTrigger.refresh();
+
+    return () => {
+      window.removeEventListener("resize", setPanelHeights);
+      triggers.forEach(t => t.kill());
+    };
+  });
+
+  mm.add("(max-width: 768px)", () => {
+    panels.forEach((panel: any) => {
+      panel.style.height = "auto";
     });
   });
-/*  ScrollTrigger.create({
-    snap: 1 / (panels.length - 1)
-  });*/
+});
 
+onUnmounted(() => {
+  window.removeEventListener("resize", setPanelHeights);
+
+  triggers.forEach(t => t.kill());
 });
 
 
@@ -74,7 +95,7 @@ onMounted(() => {
     <section class="panel profil1" id="profil1" data-theme="light">
       <h1 id="title">{{page?.data.title}}</h1>
       <div class="profil">
-        <ParallaxImage :field="page?.data.photoprofil" />
+        <ParallaxImage :field="page?.data.photoprofil"/>
         <div>
           <h2><PrismicRichText id="description_title" :field="page?.data.description_title"/></h2>
           <PrismicRichText class="description" :field="page?.data.description"/>
@@ -109,7 +130,7 @@ onMounted(() => {
           </div>
         </div>
       </section>
-          <button id="seeMore">Voir plus</button>
+          <NuxtLink id="seeMore" to="/ProjectGallery">Voir plus</NuxtLink>
     </section>
     <section class="footer panel" id="footer" data-theme="light">
       <h1>Me contacter</h1>
@@ -161,7 +182,6 @@ onMounted(() => {
 /*TITLE*/
 #title{
   position: relative;
-  /*top: 70px;*/
   color: var(--color-primary);
   font-family: 'TheSeasons', serif;
   font-size: 96px;
@@ -170,19 +190,27 @@ onMounted(() => {
 }
 /*IMAGES*/
 
-
 /*PROFIL*/
+
 .profil{
   position: relative;
   display: flex;
   flex-direction: row;
-  align-items: center;
   gap: 10%;
   margin: 0% 9.5% 0% 9.5%;
   color: var(--color-primary);
   font-family: 'Beautifully Delicious Sans', sans-serif;
   font-size: 20px;
+  align-items: center;
+  height: auto;
 }
+
+.profil img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .description{
   color: var(--color-primary);
 }
@@ -192,8 +220,6 @@ onMounted(() => {
   font-weight: normal;
 }
 .panel {
-  /*min-height: calc(100vh - 80px);
-  min-height: 100vh;*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -262,17 +288,19 @@ onMounted(() => {
 .border {
   border: 1px solid var(--color-primary);
   padding: 2rem;
-  height: 100% - 2rem;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-sizing:border-box;
   gap: 2rem;
+  color: var(--color-primary);
 }
 
 .border h2 {
   text-align: center;
   color: var(--color-primary);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: 35px;
   margin: 0;
 }
 
@@ -368,35 +396,129 @@ onMounted(() => {
 }
 
 
-@media (max-width: 500px) {
+@media (max-width:768px){
+
+  .panel{
+    min-height:auto;
+    height:auto !important;
+    padding:80px 0;
+    justify-content:flex-start;
+  }
+
   #title{
-    font-size: 40px;
+    font-size:56px;
+    text-align:center;
+    line-height:1.1;
+    padding:0 20px;
+    margin-bottom:40px;
   }
 
-  /*PROFIL*/
   .profil{
-    gap: 2%;
-    margin: 0% 9.5% 0% 9.5%;
-    font-size: 15px;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
+    flex-direction:column;
+    gap:40px;
+    margin:0 24px;
+    font-size:17px;
+    text-align:center;
   }
+
   .profil h2{
-    font-size: 20px;
+    font-size:24px;
   }
 
-  .panel {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
+  .profil img{
+    width:100%;
+    max-width:420px;
+    height:auto;
   }
 
+  .projects{
+    padding:80px 24px;
+    gap:32px;
+  }
+
+  .projects h1{
+    font-size:48px;
+  }
+
+  .highlighted-project{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+  }
+
+  .project-image{
+    height:320px;
+  }
+
+  .project-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  .highlighted-project-description{
+    padding:1rem;
+  }
+
+  .border{
+    padding:1.25rem;
+    gap:1rem;
+  }
+
+  .border h2{
+    font-size:28px;
+    text-align:center;
+  }
+
+  .info{
+    flex-direction:column;
+    gap:.25rem;
+    text-align:center;
+  }
+
+  #seeMore{
+    width:100%;
+    max-width:280px;
+    text-align:center;
+  }
+
+  .footer{
+    padding:80px 24px;
+  }
+
+  .footer h1{
+    font-size:48px;
+    text-align:center;
+  }
+
+  #mail{
+    flex-direction:column;
+    gap:16px;
+    font-size:22px;
+    text-align:center;
+    margin:60px 0;
+  }
+
+  #mail img{
+    margin-right:0;
+    width:40px;
+  }
+
+  #links-containers{
+    flex-direction:column;
+    gap:20px;
+    width:100%;
+  }
+
+  .link{
+    width:100%;
+    justify-content:center;
+    font-size:18px;
+    padding:1rem;
+  }
+
+  .link img{
+    width:24px;
+  }
 }
 </style>

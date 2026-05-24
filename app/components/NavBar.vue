@@ -6,7 +6,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { onMounted, ref } from 'vue'
 
 const activeLink = ref("")
-
+const route = useRoute()
 const setActive = (id) => {
   activeLink.value = id
 }
@@ -44,19 +44,27 @@ onMounted(() => {
 })
 
 const colorChange = () => {
+  if (route.path === "/ProjectGallery") {
+    return "var(--color-secondary)"
+  }
   if (currentTheme.value === "dark") {
     return "var(--color-secondary)"
   }
   else return "var(--color-primary)"
 }
+const background = () => {
+  if (route.path === "/ProjectGallery") {
+    return "var(--color-primary)"
+  }
+}
 
 </script>
 <template v-slot:default>
-  <div id="navBar" >
-    <nav :style="{ color: colorChange() }">
-      <a href="#" @click.prevent="() =>{setActive('profil1'); scrollToPanel('profil1')}" :class="{ active: activeLink === 'profil1' }">A propos</a>
-      <a href="#projects" @click.prevent="() =>{setActive('projects'); scrollToPanel('projects')}" :class="{ active: activeLink === 'projects' }">Projets</a>
-      <a href="#footer" @click.prevent="() =>{setActive('footer'); scrollToPanel('footer')}" :class="{ active: activeLink === 'footer' }">Contact</a>
+  <div id="navBar" :style="{backgroundColor: background()}">
+    <nav :style="{ color: colorChange()}">
+      <a href="/" @click.prevent="() =>{setActive('profil1'); scrollToPanel('profil1')}" :class="{ active: activeLink === 'profil1' }">A propos</a>
+      <a href="/#projects" @click.prevent="() =>{setActive('projects'); scrollToPanel('projects')}" :class="{ active: activeLink === 'projects' }">Projets</a>
+      <a href="/#footer" @click.prevent="() =>{setActive('footer'); scrollToPanel('footer')}" :class="{ active: activeLink === 'footer' }">Contact</a>
     </nav>
     <hr :style="{ backgroundColor: colorChange() }" />
   </div>
@@ -116,19 +124,44 @@ hr{
   border: 0;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 768px) {
+
   nav{
-    width: fit-content;
-  }
-  nav a{
-    font-size: 13px;
-    text-decoration: none;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-    margin: 2% 9.5% 1.5% 9.5%;
-  }
-  hr{
-    width: 84.5%;
+    justify-content: center;
+    gap: 40px;
   }
 
+  nav a{
+    font-size: 18px;
+    margin: 18px 0 14px;
+  }
+
+  hr{
+    width: 88%;
+  }
 }
+
+@media (max-width: 500px) {
+
+  nav{
+    justify-content: center;
+    gap: 24px;
+  }
+
+  nav a{
+    font-size: 15px;
+    margin: 16px 0 12px;
+  }
+
+  nav a::before{
+    width: 6px;
+    height: 6px;
+    left: -10px;
+  }
+
+  hr{
+    width: 90%;
+  }
+}
+
 </style>

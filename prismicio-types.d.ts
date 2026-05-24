@@ -610,12 +610,12 @@ export interface ProjectHighlightsSliceDefaultPrimaryCollaboratorsItem {
   /**
    * name field in *ProjectHighlights → Default → Primary → collaborators*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: project_highlights.default.primary.collaborators[].name
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  name: prismic.RichTextField;
+  name: prismic.KeyTextField;
 }
 
 /**
@@ -631,6 +631,21 @@ export interface ProjectHighlightsSliceDefaultPrimaryProjectImagesItem {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   image1: prismic.ImageField<never>;
+}
+
+/**
+ * Item in *ProjectHighlights → Default → Primary → Tech*
+ */
+export interface ProjectHighlightsSliceDefaultPrimaryTechItem {
+  /**
+   * tech_name field in *ProjectHighlights → Default → Primary → Tech*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_highlights.default.primary.tech[].tech_name
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  tech_name: prismic.KeyTextField;
 }
 
 /**
@@ -711,6 +726,18 @@ export interface ProjectHighlightsSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
   layout: prismic.SelectField<"default" | "reverse", "filled">;
+
+  /**
+   * Tech field in *ProjectHighlights → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_highlights.default.primary.tech[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  tech: prismic.GroupField<
+    Simplify<ProjectHighlightsSliceDefaultPrimaryTechItem>
+  >;
 }
 
 /**
@@ -785,6 +812,7 @@ declare module "@prismicio/client" {
       ProjectHighlightsSlice,
       ProjectHighlightsSliceDefaultPrimaryCollaboratorsItem,
       ProjectHighlightsSliceDefaultPrimaryProjectImagesItem,
+      ProjectHighlightsSliceDefaultPrimaryTechItem,
       ProjectHighlightsSliceDefaultPrimary,
       ProjectHighlightsSliceVariation,
       ProjectHighlightsSliceDefault,

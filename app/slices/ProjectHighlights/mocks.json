@@ -56,15 +56,9 @@
 							[
 								"name",
 								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "Esse qui cupidatat mollit commodo. Consequat laborum officia elit Lorem. Pariatur voluptate dolor qui laboris eu irure labore."
-											}
-										}
-									]
+									"__TYPE__": "FieldContent",
+									"value": "select",
+									"type": "Text"
 								}
 							]
 						]
@@ -111,6 +105,24 @@
 				"__TYPE__": "FieldContent",
 				"value": "default",
 				"type": "Select"
+			},
+			"tech": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"tech_name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "rain",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
 			}
 		},
 		"items": []

@@ -55,12 +55,10 @@
             "repeat": true,
             "fields": {
               "name": {
-                "type": "StructuredText",
+                "type": "Text",
                 "config": {
                   "label": "name",
-                  "placeholder": "",
-                  "allowTargetBlank": true,
-                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                  "placeholder": ""
                 }
               }
             }
@@ -93,6 +91,22 @@
               "reverse"
             ],
             "default_value": "default"
+          }
+        },
+        "tech": {
+          "type": "Group",
+          "config": {
+            "label": "Tech",
+            "repeat": true,
+            "fields": {
+              "tech_name": {
+                "type": "Text",
+                "config": {
+                  "label": "tech_name",
+                  "placeholder": ""
+                }
+              }
+            }
           }
         }
       },
